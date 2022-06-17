@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block contents %}
+<div style="padding: 100px;" class="container">
+    <div class="row">
+    <div class="col-md-12">
+        <div style="border-radius: 10px;" class="card bg-dark text-white">
+          <div style="border-top-left-radius: 10px;border-top-right-radius: 10px; " class="card-header text-white bg-dark border-0">
+          <p style="font-size: 20px; margin-bottom: 0px; font-weight: bold;">Confirmation</p>
+          </div>
+              <div class="card-body d-flex flex-column">
+                  <p>Are you sure want to {{action}} this course?</p>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div style="display: none;" >{{form.as_table}}</div>
+                    <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+                    <input style="width: 140px; height: 40px; text-align: center; color: white;" class="btn btn-primary" type="Submit" value="Submit">
+                </form>
+                <div style="padding: 3px;"></div>
+                <div><a style="width: 140px; height: 40px; text-align: center; color: white;" class="btn btn-danger" id="course-link" href="javascript:history.go(-1)">Cancel</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+{% endblock contents %}
+    

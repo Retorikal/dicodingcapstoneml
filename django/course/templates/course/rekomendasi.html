@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+
+{% block coursenav %}
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="courses">Course</a>
+  </li>
+{% endblock coursenav %}
+    
+
+{% block contents %}
+
+<div style="padding: 100px 100px 20px 100px;" class="container"></div>
+<div class="row">
+    <div class="col-md-12">
+        <div style="border-radius: 10px;" class="card">
+        <div style="border-top-left-radius: 10px;border-top-right-radius: 10px;" class="card-header text-white bg-dark">
+            <p style="font-size: 20px; margin-bottom: 0px; font-weight: bold;">Course Recommendation</p>
+        </div>
+            <div class="container">
+                <table style="text-align: left;" class="table table-hover">
+                    <th style="text-align: left;">Course Name</th>
+                    <th style="text-align: center;">Action</th>
+                    <tbody>
+                        <tr>
+                        {% for course in courses %}
+                            <td>{{course.name}}</td>
+                            <form action="" method="POST">
+                            {% csrf_token %}
+                            
+                            {% if course.name in order_list %}
+                            <td style="text-align: center;"><a style="width: 140px; height: 40px; text-align: center; opacity: 0.6" class="btn btn-secondary" id="course-link" href="">Enrolled</a></td>
+                            {% else %}
+                            <td style="text-align: center;"><a style="width: 140px; height: 40px; text-align: center;" class="btn btn-success" id="course-link" href="courses/create/{{course.id}}">Enroll</a></td>
+                            {% endif %}
+                            
+                            
+                            </form>
+                        </tr>
+                            {% endfor %}
+                        </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+</div>
+<div style="margin-top: 20px;" ></div>
+{% endblock contents %}
+
+    

@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block coursenav %}
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="learningpath">Learning Path</a>
+</li>
+{% endblock coursenav %}
+  
+{% block contents %}
+
+<div style="padding: 100px 100px 20px 100px;" class="container">
+    <div class="row">
+        <div class="col-md-7">
+          <div style="border-radius: 10px;" class="card">
+            <div style="border-top-left-radius: 10px;border-top-right-radius: 10px;" class="card-header text-white bg-dark">
+              <p style="font-size: 20px; margin-bottom: 0px; font-weight: bold;">Your Courses</p>
+            </div>
+                <div class="container">
+                    <table style="text-align: left;" class="table table-hover">
+                      <th style="text-align: center;">Course Name</th>
+                      <th colspan="2" style="text-align: center;">Action</th>
+                        <tbody>
+                            {% for order in user_courses %}
+                            <tr>
+                                <td>{{order.product.name}}</td>
+                                {% if order.status == 'Finished' %}
+                                <td><a style="width: 140px; height: 40px; text-align: center;" class="btn btn-success" id="course-link" href="">See Certificate</a></td>
+                                    <td><a style="width: 140px; height: 40px; text-align: center; opacity: 0.6;" class="btn btn-secondary" id="course-link" href="" role="link" aria-disabled="true">Update</a></td> 
+                                {% else %}
+                                    <td><a style="width: 140px; height: 40px; text-align: center;" class="btn btn-primary" id="course-link" href="">Continue</a></td>
+                                    <td><a style="width: 140px; height: 40px; text-align: center;" class="btn btn-info" id="course-link" href="update/{{order.id}}">Update</a></td>
+                                {% endif %}
+                              </tr>   
+                            {% endfor %}
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div style="border-radius: 10px;" class="card">
+              <div style="border-top-left-radius: 10px;border-top-right-radius: 10px;" class="card-header text-white bg-dark">
+                <p style="font-size: 20px; margin-bottom: 0px; font-weight: bold;">All Courses</p>
+              </div>
+                  <div class="container">
+                      <table style="text-align: left;" class="table table-hover">
+                        <th style="text-align: center;">Course Name</th>
+                        <th style="text-align: center;">Action</th>
+                          <tbody>
+                            <tr>
+                              {% for course in courses %}
+                                <td>{{course.name}}</td>
+                                <form action="" method="POST">
+                                  {% csrf_token %}
+                                  
+                                  {% if course.name in order_list %}
+                                  <td><a style="width: 140px; height: 40px; text-align: center; opacity: 0.6" class="btn btn-secondary" id="course-link" href="">Enrolled</a></td>
+                                  {% else %}
+                                  <td><a style="width: 140px; height: 40px; text-align: center;" class="btn btn-success" id="course-link" href="courses/create/{{course.id}}">Enroll</a></td>
+                                  {% endif %}
+                                  
+                                  
+                                </form>
+                              </tr>
+                                {% endfor %}
+                              </tbody>
+                      </table>
+                  </div>
+              </div>
+    </div>
+</div>
+    
+{% endblock contents %}
+
+{% block pagination %}
+
+
+{% if num_p1 > num_p2 %}
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+  {% if user_courses.has_previous %}
+      <a class="page-link btn btn-outline-info" href="?page=1">First</a>
+      <a class="page-link btn-outline-info" href="?page={{ user_courses.previous_page_number }}">Previous</a>
+  {% endif %}
+
+  {% for num in user_courses.paginator.page_range %}
+      {% if user_courses.number == num %}
+          <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+          {% elif num > user_courses.number|add:'-3' and num < user_courses.number|add:'3' %}
+          <li class="page-item"><a class="page-link btn-outline-info" href="?page={{ num }}">{{ num }}</a></li>
+      {% endif %}
+  {% endfor %}
+
+  {% if user_courses.has_next %}
+      <li class="page-item"><a class="page-link btn-outline-info" href="?page={{ user_courses.next_page_number }}">Next</a></li>
+      <li class="page-item"><a class="page-link btn-outline-info" href="?page={{ user_courses.paginator.num_pages }}">Last</a></li>
+  {% endif %}
+
+</ul>
+</nav>
+<div style="opacity: 0.5;" class="d-flex p-2 justify-content-center">
+  Page {{courses.number}} of {{courses.paginator.num_pages}}
+</div>
+</div>
+<div class="d-flex p-2 justify-content-center">
+<a style="width: 140px; height: 40px; text-align: center; color: white;" class="btn btn-danger" id="course-link" href="/user">Back</a>
+</div>
+{% endif %}
+
+
+{% if num_p2 > num_p1 %}
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+  {% if courses.has_previous %}
+      <a class="page-link btn btn-outline-info" href="?page=1">First</a>
+      <a class="page-link btn-outline-info" href="?page={{ courses.previous_page_number }}">Previous</a>
+  {% endif %}
+
+  {% for num in courses.paginator.page_range %}
+      {% if courses.number == num %}
+          <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+          {% elif num > courses.number|add:'-3' and num < courses.number|add:'3' %}
+          <li class="page-item"><a class="page-link btn-outline-info" href="?page={{ num }}">{{ num }}</a></li>
+      {% endif %}
+  {% endfor %}
+
+  {% if courses.has_next %}
+      <li class="page-item"><a class="page-link btn-outline-info" href="?page={{ courses.next_page_number }}">Next</a></li>
+      <li class="page-item"><a class="page-link btn-outline-info" href="?page={{ courses.paginator.num_pages }}">Last</a></li>
+  {% endif %}
+
+</ul>
+</nav>
+<div style="opacity: 0.5;" class="d-flex p-2 justify-content-center">
+  Page {{courses.number}} of {{courses.paginator.num_pages}}
+</div>
+</div>
+<div class="d-flex p-2 justify-content-center">
+<a style="width: 140px; height: 40px; text-align: center; color: white;" class="btn btn-danger" id="course-link" href="/user">Back</a>
+</div>
+{% endif %}
+  
+{% endblock pagination %}
+    

@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block coursenav %}
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="courses">Course</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="learningpath">Learning Path</a>
+</li>
+{% endblock coursenav %}
+
+{% block jumbotrons %}
+<div class="jumbotron jumbotron-fluid">
+    <div style="padding: 30px;" class="container">
+      <h1 style="font-size: 2.5rem; font-weight: bold;" class="display-4"> Welcome Back, {{user.name}}</h1>
+      <p style="font-size: 1 rem" class="lead">Let's continue your journey on {{lp}}!</p>
+      <div style="border-radius: 10px;"  class="card">
+        <div style="border-top-left-radius: 10px;border-top-right-radius: 10px;font-weight: bold;" class="card-header text-white bg-dark">
+          Featured
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock jumbotrons %}
+    
+
+{% block contents %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+          <div style="border-radius: 10px;" class="card">
+            <div style="border-top-left-radius: 10px;border-top-right-radius: 10px;" class="card-header text-white bg-dark">
+              <p style="font-size: 20px; margin-bottom: 0px; font-weight: bold;">Active Courses</p>
+            </div>
+                <div class="container">
+                    <table style="text-align: left;" class="table table-hover">
+                      <th style="text-align: center;">Course Name</th>
+                      <th style="text-align: center;">Status</th>
+                      <th colspan="2" style="text-align: center;">Action</th>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td>{{order.product.name}}</td>
+                                <td style="text-align: center;">{{order.status}}</td>
+                                {% if order.status == 'Finished' %}
+                                    <td><a style="width: 140px; height: 40px; text-align: center; text-decoration: none;" class="btn btn-success" id="course-link" href="">See Certificate</a></td> 
+                                    <td><a style="width: 140px; height: 40px; text-align: center; opacity: 0.6;" class="btn btn-secondary" id="course-link" href="" aria-disabled="true">Update</a></td>
+                                {% else %}
+                                    <td><a style="width: 140px; height: 40px; text-align: center;" class="btn btn-primary" id="course-link" href="">Continue</a></td>
+                                    <td><a style="width: 140px; height: 40px; text-align: center;" class="btn btn-info" id="course-link" href="update/{{order.id}}">Update</a></td>
+                                {% endif %}
+                              </tr>   
+                            {% endfor %}
+                                
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+          <div style="border-radius: 10px;" class="card bg-dark text-white">
+            <div style="border-top-left-radius: 10px;border-top-right-radius: 10px; " class="card-header text-white bg-dark border-0">
+            <p style="font-size: 20px; margin-bottom: 0px; font-weight: bold;">Activities</p>
+            </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ea cupiditate in quasi dolores? Distinctio perspiciatis cupiditate aspernatur error dolores culpa dolorem recusandae laudantium atque facilis? Nisi, soluta quae? Esse et, eos ipsa possimus non consequatur quaerat! Incidunt perspiciatis tenetur, consequuntur nihil consectetur velit nam, saepe unde sit ullam in libero neque, voluptate dolorum ab.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding: 10px;"></div>
+</div>
+{% endblock contents %}
+
+{% block pagination %}
+<div class="d-flex p-2 justify-content-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+        {% if orders.has_previous %}
+            <a class="page-link btn btn-outline-info" href="?page=1">First</a>
+            <a class="page-link btn-outline-info" href="?page={{ orders.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% for num in orders.paginator.page_range %}
+            {% if orders.number == num %}
+                <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% elif num > orders.number|add:'-3' and num < orders.number|add:'3' %}
+                <li class="page-item"><a class="page-link btn-outline-info" href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if orders.has_next %}
+            <li class="page-item"><a class="page-link btn-outline-info" href="?page={{ orders.next_page_number }}">Next</a></li>
+            <li class="page-item"><a class="page-link btn-outline-info" href="?page={{ orders.paginator.num_pages }}">Last</a></li>
+        {% endif %}
+
+    </ul>
+    </nav>
+</div>
+<div style="opacity: 0.5;" class="d-flex p-2 justify-content-center">
+  Page {{orders.number}} of {{orders.paginator.num_pages}}
+</div>
+
+<div style="padding: 10px;"></div>
+{% endblock pagination %}
+    

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block contents %}
+    <table style="text-align: left;" class="table table-hover">
+        <th style="text-align: center;">Id</th>
+        <th style="text-align: center;">Name</th>
+        <th style="text-align: center;">Action</th>
+    
+        <tbody>
+            
+            {% for customer in customers %}
+                <tr>
+                    <td style="text-align: center;">{{customer.id}}</td>
+                    <td style="text-align: center;">{{customer.name}}</td>
+                    <td style="text-align: center;"><a class="btn btn-primary" href="{{customer.id}}">View</a></td>
+                </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+{% endblock contents %}
+    

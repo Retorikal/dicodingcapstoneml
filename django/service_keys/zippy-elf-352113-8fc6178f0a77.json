@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "zippy-elf-352113",
+  "private_key_id": "8fc6178f0a77cd22913da5dab32feda462a5c089",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC6xdnwyK4U/w3+\nGT/yWcIAeZSbQ+nknzAhR3a8UyxZ4lswd+c/dWPnZKk6Ssf5Warxe2dWCGVpjiBt\nbl7kUvCsZoYG9HSn1cB1thJhvi1vofNXxTETP9s5Mj/roIM68tUQnB910qkGgiBl\nIbL8+e+yUF56ZpVKkkvmSu+LBzJXZH6oEk/Wcd7xDyEKfJPGxS9v0jBSc8I/o5Tx\nDqIUXzvXUs9bBd6vUjH06CPWWwYzyowV4yOcadsGGDaQf5UkGYMyg9keMDCb+FNo\nmnB4Iba6tk5l80mcsgSVCE5veHlqYy3hTyzzcsEMfK/JPpbBMYnA5lJ5COvf2r15\n0RTYrrb/AgMBAAECggEANSv1Zzyifpy7/Y5vq42NEviJ64fykuEU4SyIq4WcNzyf\nTFWeUm0Xk30PRmaatqyl41iH6zC5ukq5hZ3pyuOn29TWLC209kD+qSQ76HKtWb4H\n2oFrfrjrrsVU+D46jfIq4S8pL7BY6V7rXQ8ydx2qdR+3Pe5tawzqKbZEqtZSKRmX\nvnx9spQbRByboHTtXjjUGvJcuLeJFPupO4Rz3S5LnP7tm0GRqSzAYEPf1zFgkcxE\nhdDgd2ZkrXkc1W08qnReXb19ma7t1ITimc/2Nk+Swg3XvByHvyS08zXDHxyscPw1\nHLf8mlIG6fp1lxm+2huyBEiftU4l67qmjM/iQ64NKQKBgQD8lOwsYk8BRjSs0gnM\nKTeiJ3pp2ChJA8pNhP4QkkGFrvyKDZRDemw5Xh/QxEkCGQEIszS95ZxJacWKExXb\nboyXVmSzlxRGUnFoddHiQbg5KBzwci7jCrMh9VOvW7p/oZY4HiAc+h0LgEmJa0lG\nAJ+UtZqVObXXT2rhy8bbPtaQaQKBgQC9TO6NVnzdPTJXOiKjPSx8IKX9XFhcQTXY\nTMq+ZQ9CYCWNhUWvuRvDfQgVqweEDsGM9it+sHyEhAhiSvy88djXmysWCMr7Rkkx\nLT2xCiTl7tnb1FsrUg5qieEdN1nYh4APJ3nvAUcJxip/cW4/D5wFFZPs+FV8Omz8\nkdSWpjIfJwKBgDsozmBe7k5IGVJZJ75P8R3jzUI5RMZFQv8BJVjQSNR89d2H7LAZ\nXnvZVe5Z6xe4r4tQHgxUWVTAl2oNqlLpA7j2nUOLIU6PRMzIu84YwoNwp8aRl/XJ\nrcdIZL9v5rC6MisWs0LWOjNVauPq4xCoWLhGCNzm1XaGvWwBhKQZhbvxAoGAD2GJ\n3IgTezJ2vammmNbmn2tTsWNodo6B3oJW0uOJOt5vDrGueNm0jMzC9GfCI5PDXD3A\nSPn0FBxaRgpLwNpxwQsFlDPAsmwClHFVmuX1G42tu/PkOH/hVfzAAsy1iydvW0vc\n13OmHwAwAczopU0SY0NekpmW8JIauubqfBci6W8CgYA+267+As5ePaFEjmdAwNXp\ne6DrzYzVM9i3z2RBWLlfCg9XLwtIg5p9wz4s5C80+qcMqL9nqXVFoCXK7mkrYREa\nelwCQjRowD6ol2Q89jFxK9PldchUp2fxrYqDv2Bif2N6Mqnu25PAP8XtpawsvlY4\nzLjQHfXyp7HB90n5XgYBww==\n-----END PRIVATE KEY-----\n",
+  "client_email": "zippy-elf-352113@appspot.gserviceaccount.com",
+  "client_id": "110870240607652021345",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/zippy-elf-352113%40appspot.gserviceaccount.com"
+}

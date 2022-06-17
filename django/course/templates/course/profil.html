@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block contents %}
+<div style="margin: 100px;" class="card">
+    <div style="border-radius: 10px;border-top-right-radius: 10px; " class="card-header text-white bg-dark border-0">
+        <h3 class="card-title">{{customer.name}}</h3>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus repellat odit voluptates incidunt explicabo ratione temporibus! Vero, veritatis dolorum. Nemo provident doloribus earum accusamus aliquam expedita cumque soluta a tenetur?</p>
+        <div style="padding: 0%;" class="card-body d-flex flex-column">
+        <table style="text-align: left; " class="table text-white">
+            <th style="text-align: center;">Id</th>
+            <th style="text-align: center;">Order</th>
+            <th style="text-align: center;">Status</th>
+        
+            <tbody>
+                
+                {% for order in orders %}
+                    <tr>
+                        <td style="text-align: center;">{{order.id}}</td>
+                        <td style="text-align: center;">{{order.product.name}}</td>
+                        <td style="text-align: center;">{{order.status}}</td>
+                    </tr>
+                {% endfor %}
+        
+            </tbody>
+        </table>
+        <div style="margin: 3px;" class="d-flex flex-column"><a class="btn btn-primary" href="{{customer.id}}/order">Order</a></div>
+        <div style="margin: 3px;" class="d-flex flex-column"><a class="btn btn-danger" href="/customer">Back</a></div>
+        </div>
+    </div>
+</div>
+{% endblock contents %}
+    

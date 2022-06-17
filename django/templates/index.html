@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block administration %}
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/customer">Administration</a>
+  </li>
+{% endblock administration %}
+    
+
+{% block contents %}
+<div style="margin: 100px;" class="container">    
+    <h1>{{subtitle}}</h1>
+    <span style="margin-right: 20px; font-size: 18px" >Hello, {{request.user}}</span>
+</div>
+{% endblock contents %}
+    
